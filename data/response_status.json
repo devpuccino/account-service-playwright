@@ -1,0 +1,13 @@
+{
+    "response_status":{
+        "success": {
+            "code": "200-000",
+            "message": "Success"
+        },
+        "duplicate_data": {
+            "code": "400-001",
+            "message": "Duplicate data"
+        }
+    }
+   
+}

@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "show-report": "npx playwright show-report"
+    "test-regression:local": "NODE_ENV=local npx playwright test --grep @regression",
+    "test-pipeline:local": "NODE_ENV=local npx playwright test --grep '@e2e|@regression'",
+    "test-dev": "NODE_ENV=dev npx playwright test",
+    "test-qa": "NODE_ENV=qa npx playwright test",
+    "report": "npx playwright show-report"
   },
   "repository": {
     "type": "git",
@@ -17,11 +20,11 @@
     "url": "https://github.com/devpuccino/account-service-playwright/issues"
   },
   "homepage": "https://github.com/devpuccino/account-service-playwright#readme",
-  "dependencies": {
-    "playwright": "^1.49.1"
-  },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
     "@types/node": "^22.10.5"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
