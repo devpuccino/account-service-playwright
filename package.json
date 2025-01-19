@@ -22,9 +22,11 @@
   "homepage": "https://github.com/devpuccino/account-service-playwright#readme",
   "devDependencies": {
     "@playwright/test": "^1.49.1",
+    "@types/mysql": "^2.15.26",
     "@types/node": "^22.10.5"
   },
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "mysql2": "^3.12.0"
   }
 }

@@ -1,4 +1,5 @@
 import dotenv from "dotenv"
+import DatabaseKeyword from "./fixtures/DatabaseKeyword"
 const setupEnvironment = async()=>{
     dotenv.config({
         path: `./config/${process.env.NODE_ENV}/.env`
@@ -6,5 +7,6 @@ const setupEnvironment = async()=>{
     dotenv.config({
         path: "./config/common.env"
     })
+    DatabaseKeyword.connect();
 }
-module.exports = setupEnvironment;
+export  default setupEnvironment;

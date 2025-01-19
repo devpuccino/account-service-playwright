@@ -14,6 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   globalSetup: require.resolve("./global-setup.ts"),
+  globalTeardown: require.resolve("./global-teardown.ts"),
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -27,9 +28,10 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+  
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'] }
     }
   ],
 
