@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test-regression:local": "NODE_ENV=local npx playwright test --grep @regression",
+    "test:local": "NODE_ENV=local npx playwright test --grep @test_db",
     "test-pipeline:local": "NODE_ENV=local npx playwright test --grep '@e2e|@regression'",
-    "test-dev": "NODE_ENV=dev npx playwright test",
+    "test-dev": "NODE_ENV=dev npx playwright test --grep @test_db",
     "test-qa": "NODE_ENV=qa npx playwright test",
     "report": "npx playwright show-report"
   },
@@ -22,9 +23,10 @@
   "homepage": "https://github.com/devpuccino/account-service-playwright#readme",
   "devDependencies": {
     "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.5"
+    "@types/node": "^22.10.10"
   },
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "mysql2": "^3.12.0"
   }
 }

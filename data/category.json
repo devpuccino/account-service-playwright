@@ -2,6 +2,9 @@
     "category": {
         "duplicate": {
             "category_name": "Coffee"
+        },
+        "success":{
+          "category_name": "Coffee"  
         }
     }
 }

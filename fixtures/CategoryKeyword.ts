@@ -1,13 +1,24 @@
-import { APIRequestContext } from "@playwright/test";
+import { QueryResult } from "mysql2";
+import DatabaseKeyword from "./DatabaseKeyword";
 
 class CategoryKeyword {
-    async deleteCategoryByName(categoryName: string, request: APIRequestContext) {
-        const response = await request.get(`${process.env.CONTEXT_PATH}/api/category`)
-        const responseBody = await response.json()
-        const category = responseBody.data.find((category) => category.category_name == categoryName)
-        if(category){
-            await request.delete(`${process.env.CONTEXT_PATH}/api/category/${category.id}`)
-        }
+    private tableName:string = "category"
+    async deleteCategoryByName(categoryName: string) {
+        await DatabaseKeyword.delete(this.tableName,["category_name"],[categoryName])
     }
+    async insertCategoryToDatabase(categoryName:string,isActive:boolean){
+        await DatabaseKeyword.insert(this.tableName, ["category_name", "is_active"], [categoryName, isActive ? "1" : "0"])
+    }
+    async getCategoryByCategoryNameFromDatabase(categoryName:string,isActive:boolean):Promise<QueryResult>{
+        return await DatabaseKeyword.query(
+            this.tableName,
+            ["category_name","is_active"],
+            [categoryName, isActive ? "1" : "0"]
+        )
+    }
+     getAllActiveCategory = async():Promise<QueryResult>=>{
+        return await DatabaseKeyword.query(this.tableName,["is_active"],["1"])
+    }
+    
 }
 export default new CategoryKeyword()
